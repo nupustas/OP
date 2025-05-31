@@ -3,87 +3,65 @@
 int main() {
     ifstream input("tekstas.txt");
     ofstream output("zodziai.txt");
-    ofstream urlOutput("nuorodos.txt");
+    ofstream OutUrls("nuorodos.txt");
 
-    if (!input.is_open() || !output.is_open() || !urlOutput.is_open()) {
+    if (!input.is_open() || !output.is_open() || !OutUrls.is_open()) {
         cout << "Nepavyko atidaryti failų!" << endl;
         return 1;
     }
 
-    regex frontUnwanted(R"(^[\"'„“°.,:;!?()\[\]{}<>]+)");
-    regex backUnwanted(R"([\"'„“°.,:;!?()\[\]{}<>]+$)");
-    regex insideUnwanted(R"([\\/.|:*+=@!?#$%^&~`<>\",;\[\]])");
-    regex urlRegex(R"((https?://[^\s\"'<>]+)|(www\.[^\s\"'<>]+)|([a-zA-Z0-9.-]+\.[a-zA-Z]{2,}))");
-
     map<string, int> wordCount;
     map<string, set<int>> wordLines;
-    set<string> foundUrls;
+    set<string> urls;
 
     string line;
     int lineNumber = 1;
+
     while (getline(input, line)) {
-
-        auto urlsBegin = sregex_iterator(line.begin(), line.end(), urlRegex);
-        auto urlsEnd = sregex_iterator();
-
-        for (auto it = urlsBegin; it != urlsEnd; ++it) {
-            string url = it->str();
-
-            while (!url.empty() && (url.back() == '.' || url.back() == ',' || url.back() == ';' || url.back() == '!')) {
-                url.pop_back();
-            }
-
-            foundUrls.insert(url);
-        }
-
-      
         istringstream iss(line);
         string word;
 
         while (iss >> word) {
-            // pasalina , . - simbolius is priekio ir galo
-            word = regex_replace(word, frontUnwanted, "");
-            word = regex_replace(word, backUnwanted, "");
+            string cleaned = trimPunctuation(word);
 
-            // skip zodzius su simboliais
-            if (regex_search(word, insideUnwanted)) {
+            if (isURL(cleaned)) {
+                urls.insert(cleaned);
                 continue;
             }
 
-            // paverciam zodi mazosiomis raidemis
-            transform(word.begin(), word.end(), word.begin(),
-          [](unsigned char c){ return tolower(c); });
+            if (containsUnwantedCharacters(cleaned)) continue;
 
-            // skip tuscius, per trumpus zodzius ir simbolius
-            if (word.empty() || word.length() <= 1 || !any_of(word.begin(), word.end(), ::isalpha)) {
+            string lowered = toLower(cleaned);
+            if (lowered.empty() || lowered.length() <= 1 || !any_of(lowered.begin(), lowered.end(), ::isalpha)) {
                 continue;
             }
 
-            wordCount[word]++;
-            wordLines[word].insert(lineNumber);
+            wordCount[lowered]++;
+            wordLines[lowered].insert(lineNumber);
         }
+
         ++lineNumber;
     }
 
-    // Output zodzius
-    for (const auto& [w, count] : wordCount) {
+    for (const auto& [word, count] : wordCount) {
         if (count > 1) {
-            output<< w << ": " << count << "       lines: ";
-            const auto& lines = wordLines[w];
+            output << word <<" "<<count <<"       lines: ";
+            const auto& lines = wordLines[word];
             for (auto it = lines.begin(); it != lines.end(); ++it) {
                 output << *it;
                 if (next(it) != lines.end()) output << ", ";
             }
-            output << "\n";
+            output << endl;
         }
     }
 
-    // Output URLs
-    for (const string& url : foundUrls) {
-        urlOutput << url << "\n";
+    for (const auto& url : urls) {
+        OutUrls << url << '\n';
     }
 
-    cout << "Zodziai, pasikartoje daugiau nei 1 karta, israsyti i zodziai.txt su ju eilutemis\n";
-    cout << "Nuorodos israsytos i nuorodos.txt\n";
+    cout << "Zodziu analize baigta. Rezultatai:\n";
+    cout << "Pasikartojantys zodziai: zodziai.txt\n";
+    cout << "Nuorodos: nuorodos.txt\n";
+
     return 0;
 }
