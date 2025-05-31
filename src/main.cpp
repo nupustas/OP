@@ -10,9 +10,9 @@
 using namespace std;
 
 int main() {
-    ifstream input("input.txt");
-    ofstream output("output.txt");
-    ofstream urlOutput("urls.txt");
+    ifstream input("tekstas.txt");
+    ofstream output("zodziai.txt");
+    ofstream urlOutput("nuorodos.txt");
 
     if (!input.is_open() || !output.is_open() || !urlOutput.is_open()) {
         cout << "Nepavyko atidaryti failų!" << endl;
@@ -91,7 +91,7 @@ int main() {
         urlOutput << url << "\n";
     }
 
-    cout << "Žodžiai, pasikartoję daugiau nei 1 kartą, išrašyti į output.txt su jų eilutėmis\n";
-    cout << "Nuorodos išrašytos į urls.txt\n";
+    cout << "Zodziai, pasikartoje daugiau nei 1 karta, israsyti i zodziai.txt su ju eilutemis\n";
+    cout << "Nuorodos israsytos i nuorodos.txt\n";
     return 0;
 }

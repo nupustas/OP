@@ -29,3 +29,8 @@ cmake --build . --config Release
 cd release
 main.exe
 ```
+
+## Projekto instrukcija
+* Nukopijuokite norimą tekstą į **tekstas.txt** failą
+* Paleiskite programą, naudojant **cmake ..**
+* Programa suras pasikartojančiu žodžius bei nuorodas ir atspausdins **zodziai.txt** faile, kuris yra **../op/build/release** kataloge.
