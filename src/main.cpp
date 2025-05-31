@@ -3,6 +3,7 @@
 #include <sstream>
 #include <string>
 #include <map>
+#include <set>
 #include <algorithm>
 #include <regex>
 
@@ -23,17 +24,20 @@ int main() {
     regex insideUnwanted(R"([\\/.|:*+=@!?#$%^&~`<>\",;\[\]])");
 
     map<string, int> wordCount;
+    map<string, set<int>> wordLines;  // laiko zodziu eilutes nr
+
     string line;
+    int lineNumber = 1;
     while (getline(input, line)) {
         istringstream iss(line);
         string word;
 
         while (iss >> word) {
-            // Remove unwanted punctuation at start and end
+            // pasalina simbolius is priekio ir galo
             word = regex_replace(word, frontUnwanted, "");
             word = regex_replace(word, backUnwanted, "");
 
-            // Skip words containing unwanted chars inside
+            // skip zodzius kurie turi neleistinus simbolius
             if (regex_search(word, insideUnwanted)) {
                 continue;
             }
@@ -41,21 +45,30 @@ int main() {
             // Convert to lowercase
             transform(word.begin(), word.end(), word.begin(), ::tolower);
 
-            // Skip empty, very short, or non-alphabetic words
+            // Skip tuscius, per trumpus zodzius ir simbolius
             if (word.empty() || word.length() <= 1 || !any_of(word.begin(), word.end(), ::isalpha)) {
                 continue;
             }
 
             wordCount[word]++;
+            wordLines[word].insert(lineNumber);
         }
+        ++lineNumber;
     }
 
+    // Output words appearing more than once, with counts and line numbers
     for (const auto& [w, count] : wordCount) {
         if (count > 1) {
-            output << w << ": " << count << "\n";
+            output << w << ": " << count << "       lines: ";
+            const auto& lines = wordLines[w];
+            for (auto it = lines.begin(); it != lines.end(); ++it) {
+                output << *it;
+                if (next(it) != lines.end()) output << ", ";
+            }
+            output << "\n";
         }
     }
 
-    cout << "Žodžiai, pasikartoję daugiau nei 1 kartą, išrašyti į output.txt\n";
+    cout << "Žodžiai, pasikartoję daugiau nei 1 kartą, išrašyti į output.txt su jų eilutėmis\n";
     return 0;
 }

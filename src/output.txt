@@ -1,63 +1,63 @@
-amžiaus: 3
-apie: 3
-armija: 2
-buvo: 11
-centru: 2
-didysis: 2
-fabrikas: 2
-forma: 3
-gamyklos: 2
-gubernijos: 2
-gyventojų: 2
-iki: 2
-ir: 14
-kaip: 5
-kalboje: 2
-karalius: 2
-karo: 3
-kartą: 2
-kovo: 2
-kultūros: 3
-kunigaikštis: 2
-lenkijos: 2
-lietuva: 3
-lietuvos: 8
-lietuvą: 2
-mašinų: 3
-metu: 2
-mieste: 2
-miesto: 3
-miestą: 4
-namų: 2
-nuo: 5
-pirmą: 2
-po: 3
-pramonė: 2
-regiono: 2
-rusijos: 5
-sausio: 2
-senoji: 2
-sostine: 2
-sostinė: 3
-sovietai: 2
-sovietų: 3
-su: 2
-sąjungos: 2
-tapo: 7
-universitetas: 3
-universitetą: 2
-upės: 2
-užėmė: 4
-vardas: 2
-vardo: 4
-vasarą: 2
-vilnia: 3
-vilniaus: 14
-vilniuje: 4
-vilnius: 10
-vilnių: 7
-visa: 2
-vystėsi: 2
-yra: 2
-Šiaurės: 3
-žydų: 3
+amžiaus: 3 --- lines: 1, 2
+apie: 3 --- lines: 1, 2, 8
+armija: 2 --- lines: 3, 8
+buvo: 11 --- lines: 3, 5, 7, 8
+centru: 2 --- lines: 2
+didysis: 2 --- lines: 2
+fabrikas: 2 --- lines: 11
+forma: 3 --- lines: 1
+gamyklos: 2 --- lines: 11
+gubernijos: 2 --- lines: 5
+gyventojų: 2 --- lines: 3, 8
+iki: 2 --- lines: 2, 5
+ir: 14 --- lines: 1, 2, 3, 5, 7, 8
+kaip: 5 --- lines: 1, 2, 5
+kalboje: 2 --- lines: 1
+karalius: 2 --- lines: 2
+karo: 3 --- lines: 3, 5, 9
+kartą: 2 --- lines: 2, 3
+kovo: 2 --- lines: 2, 13
+kultūros: 3 --- lines: 2, 15
+kunigaikštis: 2 --- lines: 2
+lenkijos: 2 --- lines: 2
+lietuva: 3 --- lines: 5, 8, 13
+lietuvos: 8 --- lines: 1, 2, 7, 8, 9
+lietuvą: 2 --- lines: 8, 9
+mašinų: 3 --- lines: 11
+metu: 2 --- lines: 3
+mieste: 2 --- lines: 1, 2
+miesto: 3 --- lines: 1, 2, 3
+miestą: 4 --- lines: 3, 7
+namų: 2 --- lines: 8, 9
+nuo: 5 --- lines: 1, 2, 5, 9, 13
+pirmą: 2 --- lines: 2, 3
+po: 3 --- lines: 3, 5, 9
+pramonė: 2 --- lines: 11
+regiono: 2 --- lines: 2, 9
+rusijos: 5 --- lines: 3, 5
+sausio: 2 --- lines: 13
+senoji: 2 --- lines: 1
+sostine: 2 --- lines: 9, 15
+sostinė: 3 --- lines: 5, 7
+sovietai: 2 --- lines: 9, 13
+sovietų: 3 --- lines: 8, 9, 13
+su: 2 --- lines: 1, 8
+sąjungos: 2 --- lines: 8, 13
+tapo: 7 --- lines: 2, 8, 9, 15
+universitetas: 3 --- lines: 2, 7
+universitetą: 2 --- lines: 2, 5
+upės: 2 --- lines: 1, 2
+užėmė: 4 --- lines: 3, 8, 9, 13
+vardas: 2 --- lines: 1
+vardo: 4 --- lines: 1
+vasarą: 2 --- lines: 8
+vilnia: 3 --- lines: 1
+vilniaus: 14 --- lines: 1, 2, 3, 5, 7, 8, 9, 11, 15
+vilniuje: 4 --- lines: 7, 9, 11, 13
+vilnius: 10 --- lines: 1, 2, 5, 8, 15
+vilnių: 7 --- lines: 2, 3, 7, 8, 9, 13
+visa: 2 --- lines: 5, 8
+vystėsi: 2 --- lines: 5, 11
+yra: 2 --- lines: 1
+Šiaurės: 3 --- lines: 2, 3, 9
+žydų: 3 --- lines: 2, 8
