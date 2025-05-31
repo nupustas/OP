@@ -42,7 +42,7 @@ int main() {
 
         ++lineNumber;
     }
-
+    // zodziu output
     for (const auto& [word, count] : wordCount) {
         if (count > 1) {
             output << word <<" "<<count <<"       lines: ";
@@ -54,14 +54,19 @@ int main() {
             output << endl;
         }
     }
-
+    // urls output
     for (const auto& url : urls) {
         OutUrls << url << '\n';
     }
 
     cout << "Zodziu analize baigta. Rezultatai:\n";
-    cout << "Pasikartojantys zodziai: zodziai.txt\n";
-    cout << "Nuorodos: nuorodos.txt\n";
+    cout << "Pasikartojantys zodziai irasyti i : zodziai.txt\n";
+    cout << "Nuorodos irasytos i: nuorodos.txt\n";
+
+    int x;
+    cout<< "Paspausk bet kuri klavisa, kad baigti programa..." << endl;
+
+    cin >>x;
 
     return 0;
 }
