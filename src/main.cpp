@@ -1,13 +1,4 @@
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <string>
-#include <map>
-#include <set>
-#include <algorithm>
-#include <regex>
-
-using namespace std;
+#include "global.h"
 
 int main() {
     ifstream input("tekstas.txt");
@@ -60,7 +51,8 @@ int main() {
             }
 
             // paverciam zodi mazosiomis raidemis
-            transform(word.begin(), word.end(), word.begin(), ::tolower);
+            transform(word.begin(), word.end(), word.begin(),
+          [](unsigned char c){ return tolower(c); });
 
             // skip tuscius, per trumpus zodzius ir simbolius
             if (word.empty() || word.length() <= 1 || !any_of(word.begin(), word.end(), ::isalpha)) {
